@@ -17,31 +17,31 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-        render();
+    	render();
     }
 
-	public static void show(File xml) {
+    public static void show(File xml) {
+    	
+    	File xsl = new File(Play.applicationPath + "/CodeMetricsReport.xsl");
 		
-		File xsl = new File(Play.applicationPath + "/CodeMetricsReport.xsl");
-		
-		try {
+    	try {
 			
-			TransformerFactory factory = TransformerFactory.newInstance();
+    		TransformerFactory factory = TransformerFactory.newInstance();
 			
-			StreamSource xmlsrc = new StreamSource(new FileInputStream(xml));
-			StreamSource xslsrc = new StreamSource(new FileInputStream(xsl));
+    		StreamSource xmlsrc = new StreamSource(new FileInputStream(xml));
+    		StreamSource xslsrc = new StreamSource(new FileInputStream(xsl));
 			
-			Transformer transformer = factory.newTransformer(xslsrc);	
+    		Transformer transformer = factory.newTransformer(xslsrc);	
 			
-			Properties prop = new Properties();
-			prop.setProperty("encoding", "UTF-8");
-			transformer.setOutputProperties(prop);
+    		Properties prop = new Properties();
+    		prop.setProperty("encoding", "UTF-8");
+    		transformer.setOutputProperties(prop);
 			
-			response.setContentTypeIfNotSet("text/html; charset=UTF-8");
-			transformer.transform(xmlsrc, new StreamResult(response.out));
+    		response.setContentTypeIfNotSet("text/html; charset=UTF-8");
+    		transformer.transform(xmlsrc, new StreamResult(response.out));
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
-	}
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}	
+    }
 }
