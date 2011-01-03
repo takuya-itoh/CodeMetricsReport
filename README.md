@@ -1,6 +1,7 @@
 # CodeMetricsReport
 
 This application is ...
+
 * a viewer of result of [Metrics](http://metrics.sourceforge.net/).
 * running on [Play! Framework](http://www.playframework.org/).
 
