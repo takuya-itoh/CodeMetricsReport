@@ -16,8 +16,8 @@ import models.*;
 
 public class Application extends Controller {
 	
-	private static String ALERT_ONLY_XSL_FILE_NAME = "CodeMetricsReportAlertOnly.xsl";
-	private static String ALMOST_ALL_XSL_FILE_NAME = "CodeMetricsReportAlmostAll.xsl";
+    private static String ALERT_ONLY_XSL_FILE_NAME = "CodeMetricsReportAlertOnly.xsl";
+    private static String ALMOST_ALL_XSL_FILE_NAME = "CodeMetricsReportAlmostAll.xsl";
 
     public static void index() {
     	render();
