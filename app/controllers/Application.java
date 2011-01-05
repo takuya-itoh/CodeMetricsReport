@@ -15,14 +15,17 @@ import javax.xml.transform.stream.StreamSource;
 import models.*;
 
 public class Application extends Controller {
+	
+	private static String ALERT_ONLY_XSL_FILE_NAME = "CodeMetricsReportAlertOnly.xsl";
+	private static String ALMOST_ALL_XSL_FILE_NAME = "CodeMetricsReportAlmostAll.xsl";
 
     public static void index() {
     	render();
     }
 
-    public static void show(File xml) {
+    public static void show(File xml, String format) {
     	
-    	File xsl = new File(Play.applicationPath + "/CodeMetricsReport.xsl");
+    	File xsl = new File(Play.applicationPath + "/" + getXslFileName(format));
 		
     	try {
 			
@@ -43,5 +46,19 @@ public class Application extends Controller {
     	} catch (Exception e) {
     		e.printStackTrace();
     	}	
+    }
+    
+    private static String getXslFileName(String format) {
+    	
+    	if ("AlertOnly".equals(format)) {
+    		
+    		return ALERT_ONLY_XSL_FILE_NAME;
+    		
+    	} else if ("AlmostAll".equals(format)) {
+    		
+    		return ALMOST_ALL_XSL_FILE_NAME;
+    	}
+    	
+    	return ALERT_ONLY_XSL_FILE_NAME;
     }
 }

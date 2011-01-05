@@ -3,5 +3,7 @@
 <h1>Code Metrics Report</h1>
 <form action="@{show()}" method="POST" enctype="multipart/form-data">
 	<input type="file" id="xml" name="xml" /><br/>
+	<input type="radio" id="format" name="format" value="AlertOnly" checked>Alert Only
+	<input type="radio" id="format" name="format" value="AlmostAll">Almost All<br/>
 	<input type="submit" value="upload" /><br/>
 </form>
